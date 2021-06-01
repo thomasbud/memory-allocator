@@ -1,0 +1,134 @@
+Ackerman(3, 8): 2045
+Time taken:  [sec = 241, musec = 806873]
+Number of allocate/free cycles: 2785999
+
+Ackerman(3, 7): 1021
+Time taken:  [sec = 60, musec = 71850]
+Number of allocate/free cycles: 693964
+
+Ackerman(3, 6): 509
+Time taken:  [sec = 14, musec = 987958]
+Number of allocate/free cycles: 172233
+
+Ackerman(3, 5): 253
+Time taken:  [sec = 3, musec = 664643]
+Number of allocate/free cycles: 42438
+
+Ackerman(3, 4): 125
+Time taken:  [sec = 0, musec = 891796]
+Number of allocate/free cycles: 10307
+
+Ackerman(3, 3): 61
+Time taken:  [sec = 0, musec = 209231]
+Number of allocate/free cycles: 2432
+
+Ackerman(3, 2): 29
+Time taken:  [sec = 0, musec = 52905]
+Number of allocate/free cycles: 541
+
+Ackerman(3, 1): 13
+Time taken:  [sec = 0, musec = 10978]
+Number of allocate/free cycles: 106
+
+Ackerman(2, 8): 19
+Time taken:  [sec = 0, musec = 12964]
+Number of allocate/free cycles: 189
+
+Ackerman(2, 7): 17
+Time taken:  [sec = 0, musec = 11002]
+Number of allocate/free cycles: 152
+
+Ackerman(2, 6): 15
+Time taken:  [sec = 0, musec = 19782]
+Number of allocate/free cycles: 119
+
+Ackerman(2, 5): 13
+Time taken:  [sec = 0, musec = 9266]
+Number of allocate/free cycles: 90
+
+Ackerman(2, 4): 11
+Time taken:  [sec = 0, musec = 11615]
+Number of allocate/free cycles: 65
+
+Ackerman(2, 3): 9
+Time taken:  [sec = 0, musec = 2824]
+Number of allocate/free cycles: 44
+
+Ackerman(2, 2): 7
+Time taken:  [sec = 0, musec = 2022]
+Number of allocate/free cycles: 27
+
+Ackerman(2, 1): 5
+Time taken:  [sec = 0, musec = 747]
+Number of allocate/free cycles: 14
+
+Ackerman(1, 8): 10
+Time taken:  [sec = 0, musec = 1927]
+Number of allocate/free cycles: 18
+
+Ackerman(1, 7): 9
+Time taken:  [sec = 0, musec = 1691]
+Number of allocate/free cycles: 16
+
+Ackerman(1, 6): 8
+Time taken:  [sec = 0, musec = 1039]
+Number of allocate/free cycles: 14
+
+Ackerman(1, 5): 7
+Time taken:  [sec = 0, musec = 794]
+Number of allocate/free cycles: 12
+
+Ackerman(1, 4): 6
+Time taken:  [sec = 0, musec = 718]
+Number of allocate/free cycles: 10
+
+Ackerman(1, 3): 5
+Time taken:  [sec = 0, musec = 310]
+Number of allocate/free cycles: 8
+
+Ackerman(1, 2): 4
+Time taken:  [sec = 0, musec = 145]
+Number of allocate/free cycles: 6
+
+Ackerman(1, 1): 3
+Time taken:  [sec = 0, musec = 14]
+Number of allocate/free cycles: 4
+
+The report should contain the following:
+1. Run time data for various ackerman values, and various basic block sizes. The data should be presented as graphs.
+2. If you have made any specific design choices that you may think might be different from what was described in class, make sure to discuss those aspects of program. We do not require that you describe your whole program.
+3. The handout has some questions in it. For instance, can you think of design changes that might make the program faster? If so, does that increase memory overhead significantly. For this kind analysis, always focus on asymptotic behavior, i.e., what happens at scale (e.g.. when dealing with GBs of memory, or when most calls are small memory or large memory)? Since, we cannot test those cases in our program within a reasonable time, some educated forecast would show your thought process and your in-depth understanding. 
+The report can be small and that is expected. 
+
+
+1.The handout says "determine where the bottlenecks are in the system" Could someone explain what does it mean? 
+2. "Identify at least one point you will modify to improve performance" 
+Does the "performance here means reduce overhead and the time required to run the program, or does it mean to minimized block header size / to have more efficient memory?
+(If it's about reducing overhead, what should we do to reduce it?)
+3. the handout also says we need to have two graphs. Do we just set a specific value for n , e.g. let n=1 and x-axis be m = 1,2,3 ... 8 and let y -axis measures the total time for each m value?
+4. Do we need to have paragraphs to explain each part of our code?
+5. I got very unstable "musec" values. When I ran ackermann function, for the same n amd m values,the first run I got 435 musec the second run I got 3189 musec ... Is it normal? 
+
+1. Bottleneck means that what part of your program is taking the most time. Which operations/functions do you think take longer than the others? This is important because if you would like to speed your program up, you need to work on bottlenecks. It is not guaranteed that you will find a faster solution. But trying no optimize the non-bottleneck parts is of no value.
+2. By improving performance, I mean reduce run time. 
+3. You can present everything in a single graph, but you will then have multiple plots inside it, 1 for each n.
+4. No. Because then it become another version of the handout. You only need to explain the things that you think are unique to your implementation.
+5. For small n, m, ackerman may take random amount of time because the run time itself is small and there is obvious randomness coming from the scheduler. However, there should not be any noticeable randomness for larger ackerman values, because they take much longer. Make sure that your ackerman values are right by comparing against those from wiki.
+
+
+The submission folder should also
+contain a report file (called analysis.pdf, in PDF format) with the analysis of the effects of
+the performance of your allocator for increasing numbers of allocate/free operations. Vary
+this number by varying the parameters n and m in the Ackerman function. Determine where
+the bottlenecks are in the system, or where poor implementation is affecting performance.
+Identify at least one point that you would modify in this simple implementation to improve
+performance. Argue why it would improve performance. The complete analysis can be
+made in 500 words or less with at least one or two graphs. If your program does not work
+correctly, this report/analysis is the right place to be as clear as possible about which of your
+functions work, which do not, and which only partially work. While writing this program,
+you will realize how difficult it is for the grader to give you partial points unless you help
+him. Please try to communicate with screen-shots and other forms such that the grader
+has little difficulty running your program and he can identify what is working and what is
+not working easily.
+
+ 
